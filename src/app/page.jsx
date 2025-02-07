@@ -3,6 +3,7 @@
 import { useState } from "react";
 import axios from "axios";
 
+
 export default function Home() {
   const [personImageUrl, setPersonImageUrl] = useState("");
   const [garmentImageUrl, setGarmentImageUrl] = useState("");
@@ -41,12 +42,11 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-      <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
+      <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md flex flex-col gap-2">
         <h1 className="text-2xl font-bold text-center text-gray-800">Virtual Try-On</h1>
         <p className="text-gray-600 text-center mt-2">Provide URLs for person and garment images.</p>
 
-        {/* Person Image URL */}
-        <label className="text-gray-600">Person Image URL</label>
+        <label className="text-gray-600 mt-6">Person Image URL</label>
         <input
           type="text"
           placeholder="Enter person image URL"
@@ -65,7 +65,6 @@ export default function Home() {
           </div>
         )}
 
-        {/* Garment Image URL */}
         <label className="text-gray-600">Garment Image URL</label>
         <input
           type="text"
@@ -85,19 +84,16 @@ export default function Home() {
           </div>
         )}
 
-        {/* Try On Button */}
         <button
           onClick={handleTryOn}
           disabled={loading}
-          className="w-full mt-4 p-2 bg-blue-600 text-white rounded-md disabled:opacity-50"
+          className="w-full mt-4 p-2 hover:bg-blue-800 bg-blue-600 text-white rounded-md disabled:opacity-50"
         >
           {loading ? "Processing..." : "Try On"}
         </button>
 
-        {/* Error Handling */}
         {error && <p className="text-red-500 text-sm text-center mt-2">{error}</p>}
 
-        {/* Result Image */}
         {resultImage && (
           <div className="mt-4">
             <h2 className="text-lg font-semibold text-gray-800 text-center">Result</h2>
